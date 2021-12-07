@@ -1,0 +1,113 @@
+<html lang="En">
+<head>
+    <a href="qestion.html"></a>
+</head>
+
+<body>
+    <div class="container d-flex justify-content-center col-md-7 p-5 mt-5 bg-info">
+        <!--<form name="questionform">
+            <div class="form-group justify-content-center">
+                <h3>Create Question:</h3>
+                <input type="text" name="qdesc" placeholder="Question description" [(ngModel)]="objque.questiondesc">
+                 <button class="btn btn-primary my-2 mx-2" (click)="addOption()">ADD Option</button> 
+                
+                
+            </div>
+             <div *ngFor="let opt of objque.option; let i = index">
+                 {{i}} 
+                 <app-options [option]="opt"></app-options> 
+                 <button class="btn btn-primary" (click)="deleteOption(i)">Remove Option</button> 
+             </div> 
+        </form> -->
+        <form class="form-horizontal ">
+            <div class="form-group" [formGroup]="questionForm" (ngSubmit)="questionUser()">
+                &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" formControlName="qdesc" placeholder="Enter Question"
+                     #quedesc><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: white;" *ngIf="qdesc && qdesc.invalid">field Should not be empty.</span>
+                    <br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" formControlName="opt" placeholder="Enter Option" 
+                    #opt>&nbsp;&nbsp;
+
+                    
+                <button class="btn btn-primary mx-2 my-2" (click)="addOption()" [disabled]="opt.value.length == 0">Add
+                    Option</button><br><br>
+                    
+                <div>
+                    <table>
+                        <tr *ngFor="let opt of objque.option; let i = index">
+                            <td><span  style="float:left;color:white;padding:2px;">{{i + 1}}</span></td>
+                            <!-- <td><app-options [option]="opt"></app-options></td> -->
+                            <td>{{opt.description}}</td>
+                            <td><button class="btn btn-primary" (click)="deleteOption(i)">Remove</button></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="d-flex">
+                    <button style="position:absolute;bottom:30px;right:30px;margin:0;padding:5px 3px;"
+                        class="btn btn-primary mt-auto" [hidden]="type == 'Add' ? hideAdd : hideUpdate" type="submit" (click)="type == 'Add' ? save() : update()"
+                        [disabled]="(objque.option.length > 1 ? (quedesc.value.length == 0 ? true : false) : true)">
+                        {{type == "Add" ? "Add" : "edit"}}</button>
+                        
+                         <!-- <button style="position:absolute;bottom:30px;right:20px;margin:0;padding:5px 3px;"
+                        class="btn btn-primary mt-auto" [hidden]="hideUpdate" (click)="update()">
+                        Update</button> -->
+                        
+                    <div class="d-flex">
+                        <button style="position:absolute;bottom:30px;right:90px;margin:0;padding:5px 3px;"
+                            class="btn btn-primary mt-auto" (click)="Clear()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- <div class="form-group"> -->
+        <!-- <button class="btn btn-primary ml-3 mx-2 my-2 " type="submit" (click)="save()" disabled [disabled]="(objque.option.length > 1 ? (quedesc.value.length == 0 ? true : false) : true)">SAVE</button>
+                <button class="btn btn-primary ml-5 mx-2 my-2 float-right justify-content-end" type="submit"  (click)="Clear()">Clear</button>
+        </div> -->
+        </div>
+</body>
+<!-- <script>
+$scope.showSave = false;
+$scope.showBtns = true;
+$scope.send= function(){
+      $scope.showSave = true;
+};
+
+$scope.close = function(){
+      $scope.showBtns =false;
+}
+</script> -->
+
+</html>
+
+<!-- <html>
+
+<head>
+    <a href="qestion.html"></a>
+</head>
+
+<body>
+    <div class="container col-md-7 p-5 mt-5 bg-info">
+        <form class="form-horizontal" name="questionform">
+            <div class="form-group justify-content-center">
+                <h3>Update Question:</h3><br><br> -->
+                <!-- <input type="text" name="textbox" placeholder="Enter Question here.."><br><br> -->
+                <!-- &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="qdesc" placeholder="Question description" [(ngModel)]="objque.questiondesc">
+                <button class="btn btn-light my-2 mx-2" (click)="addOption()">ADD Option</button>
+                 -->
+                <!-- <button class="btn btn-primary"  routerlink="edit">edit Option</button>
+                -->
+            <!-- </div>
+            <div class="form-group justify-content-center">
+            <div *ngFor="let opt of objque.option; let i = index"> -->
+                <!-- {{i}} -->
+                <!-- <app-options [option]="opt"></app-options>
+                <button class="btn btn-light" (click)="deleteOption(i)">Remove Option</button>
+            </div>
+            <button class="btn btn-light mx-2 my-2" (click)="save()">SAVE</button>
+            <button class="btn btn-light mx-2 my-2"  (click)="Clear()">Clear</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html> -->

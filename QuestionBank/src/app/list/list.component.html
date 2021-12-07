@@ -1,0 +1,27 @@
+<div class="container">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Questions</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let que of list; let i = index">
+      <td>{{que.questiondesc}}</td>
+      <td>
+        <table>
+          <tr>
+            <td *ngFor="let opt of que.option; let i = index">{{opt.description}}</td>
+          </tr>
+        </table>
+      </td>
+    <td>
+      <button class="btn btn-primary m-2" routerLink="/questions/edit/{{i}}">EDIT</button>
+      <button class="btn btn-primary" (click)="deleteOption(i)">DELETE</button>
+      <!-- <a routerLink="/edit/{{i}}">Edit</a> -->
+    </td>
+    </tr>
+  </tbody>
+</table>
+</div>
